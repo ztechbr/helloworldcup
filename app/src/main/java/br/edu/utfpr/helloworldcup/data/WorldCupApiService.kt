@@ -1,5 +1,6 @@
 package br.edu.utfpr.helloworldcup.data
 
+import br.edu.utfpr.helloworldcup.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -43,7 +44,7 @@ object RetrofitClient {
     val instance: WorldCupApiService by lazy {
         val authInterceptor = Interceptor { chain ->
             val request = chain.request().newBuilder()
-                .addHeader("X-Token", "COPA26!")
+                .addHeader("X-Token", BuildConfig.WORLD_CUP_TOKEN)
                 .build()
             chain.proceed(request)
         }
